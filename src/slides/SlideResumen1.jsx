@@ -22,7 +22,16 @@ export function SlideResumen1() {
           <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
             Resumen 2025
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mt-4 rounded-full"></div>
+          <div className="flex items-center gap-1.5 mt-5">
+            <div
+              className="w-24 h-1 rounded-full"
+              style={{
+                background: 'linear-gradient(to right, #3b82f6, #22d3ee 60%, transparent)',
+                boxShadow: '0 0 12px rgba(59, 130, 246, 0.5), 0 0 4px rgba(34, 211, 238, 0.3)'
+              }}
+            />
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+          </div>
         </motion.div>
 
         {/* Grid principal 2x2 - 85% del espacio restante */}

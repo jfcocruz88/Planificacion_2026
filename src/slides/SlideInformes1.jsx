@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { AnimatedBackground } from '../components/AnimatedBackground'
 
 const informes = [
   {
@@ -84,82 +85,93 @@ export function SlideInformes1() {
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-900">
 
-      {/* Acentos sutiles */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-950/30 to-transparent" />
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-3xl" />
+      {/* Fondo animado Bokeh */}
+      <AnimatedBackground accentColor="cyan" />
 
       {/* Contenido */}
       <div className="relative z-10 w-full h-full px-20 py-12 flex flex-col">
 
         {/* Header */}
         <motion.div
-          className="mb-10 shrink-0"
+          className="mb-8 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex items-center gap-4">
-            <div>
-              <span className="text-cyan-400/80 text-sm tracking-[0.25em] uppercase font-medium">
-                Publicaciones Planificadas
-              </span>
-              <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
-                Informes 2026 — JFC
-              </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mt-4 rounded-full"></div>
-            </div>
-          </div>
+          <span className="text-cyan-400/80 text-sm tracking-[0.25em] uppercase font-medium">
+            Publicaciones Planificadas
+          </span>
+          <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
+            Informes 2026
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mt-4 rounded-full"></div>
         </motion.div>
 
-        {/* Grid de informes */}
-        <motion.div
-          className="flex-1 grid grid-cols-2 gap-6 content-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-        >
-          {informes.map((informe, index) => (
-            <motion.div
-              key={informe.num}
-              className="group relative rounded-2xl p-7 border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: 'linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)'
-              }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 + index * 0.05 }}
-            >
-              {/* Número decorativo de fondo */}
-              <span className="absolute top-4 right-4 text-[4rem] font-bold text-white/[0.03] font-mono leading-none select-none">
-                {informe.num}
-              </span>
+        {/* Grid con imagen central */}
+        <div className="flex-1 relative -mt-[8%]">
 
-              {/* Header de card */}
-              <div className="flex items-start gap-4 mb-5 relative">
-                {/* Número */}
-                <span className="text-2xl font-bold text-cyan-400 font-mono shrink-0 mt-0.5">
-                  {informe.num}
-                </span>
-
-                <div className="h-12 w-px bg-gradient-to-b from-white/20 to-transparent shrink-0"></div>
-
-                {/* Título con altura mínima */}
-                <h3 className="text-[17px] font-semibold text-white flex-1 leading-snug min-h-[44px] flex items-center">
-                  {informe.title}
-                </h3>
-
-                {/* Ícono con fondo circular */}
-                <div className="w-12 h-12 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 group-hover:bg-white/[0.1] transition-colors">
-                  {informe.icon}
-                </div>
+          {/* Imagen central - exactamente al centro */}
+          <motion.div
+            className="absolute z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <div className="relative">
+              <div className="w-[192px] h-[192px] rounded-full overflow-hidden ring-4 ring-slate-900 shadow-2xl shadow-cyan-500/20">
+                <img
+                  src="/assets/JFC.png"
+                  alt="José Francisco Cruz"
+                  className="w-full h-full object-cover"
+                />
               </div>
+              <div className="absolute inset-0 rounded-full ring-2 ring-cyan-400/40"></div>
+            </div>
+          </motion.div>
 
-              {/* Objetivo */}
-              <p className="text-[#B8C0CC] text-[15px] leading-[1.65] pl-14">
-                {informe.objetivo}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Grid de informes */}
+          <motion.div
+            className="w-full h-full grid grid-cols-2 gap-x-[17rem] gap-y-10 content-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.15 }}
+          >
+            {informes.map((informe, index) => (
+              <motion.div
+                key={informe.num}
+                className="group relative rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  background: 'linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)',
+                  padding: '1.5rem'
+                }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + index * 0.05 }}
+              >
+                  {/* Header de card */}
+                  <div className="flex items-start gap-3 mb-4 relative">
+                    <span className="text-[23px] font-bold text-blue-400 font-mono shrink-0">
+                      {informe.num}
+                    </span>
+                    <div className="h-8 w-px bg-gradient-to-b from-white/25 to-transparent shrink-0"></div>
+                    <h3 className="text-[22px] font-bold text-white flex-1 leading-tight tracking-[-0.01em]">
+                      {informe.title}
+                    </h3>
+                    <div className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 group-hover:bg-white/[0.1] transition-colors">
+                      {informe.icon}
+                    </div>
+                  </div>
+
+                  {/* Objetivo */}
+                  <div className="pl-11 flex gap-2.5">
+                    <div className="w-[2px] rounded-full bg-gradient-to-b from-blue-400/50 to-blue-400/10 shrink-0"></div>
+                    <p className="text-[#C8D0DC] text-[18px] leading-[1.65]">
+                      {informe.objetivo}
+                    </p>
+                  </div>
+                </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
       </div>
     </div>
