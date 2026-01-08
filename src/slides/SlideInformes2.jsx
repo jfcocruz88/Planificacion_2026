@@ -7,7 +7,7 @@ const informes = [
     title: 'Administrativo-sancionatorio',
     objetivo: '¿Cómo le va a las Superintendencias? Medir la consistencia, proporcionalidad y control judicial de las sanciones administrativas.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M12 8v4M12 16h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
@@ -18,7 +18,7 @@ const informes = [
     title: 'Macrozona Sur',
     objetivo: 'Evaluar el desempeño del sistema de persecución penal en causas vinculadas a violencia rural y terrorismo en las regiones de Biobío, La Araucanía, Los Ríos y Los Lagos.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.5"/>
       </svg>
@@ -29,7 +29,7 @@ const informes = [
     title: 'Bloques de votación en la Corte Suprema',
     objetivo: 'Revisar la conformación de los bloques de votación, tras los cambios de integración en la Corte Suprema, especialmente en la Tercera Sala.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -41,7 +41,7 @@ const informes = [
     title: 'Ley Karin',
     objetivo: 'Analizar el número de causas judiciales ingresadas por concepto de esta ley y su impacto en el sistema de justicia laboral.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M12 14l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -53,7 +53,7 @@ const informes = [
     title: 'Bloques de votación en el Tribunal Constitucional',
     objetivo: 'Revisar la conformación de los bloques de votación, tras los cambios en la integración.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     )
@@ -63,7 +63,7 @@ const informes = [
     title: 'El lento regreso al antiguo sistema procesal penal',
     objetivo: 'Analizar el funcionamiento del sistema procesal penal, identificando los principales cuellos de botella que explican la duración de los procesos y formulando propuestas de mejora.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-slate-400">
         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M4 4l2.5 2.5M4 4v2.5M4 4h2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -80,35 +80,35 @@ export function SlideInformes2() {
       <AnimatedBackground accentColor="purple" />
 
       {/* Contenido */}
-      <div className="relative z-10 w-full h-full px-20 py-12 flex flex-col">
+      <div className="relative z-10 w-full h-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-6 sm:py-8 lg:py-12 flex flex-col slide-scroll lg:overflow-hidden">
 
         {/* Header */}
         <motion.div
-          className="mb-8 shrink-0"
+          className="mb-4 sm:mb-6 lg:mb-8 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className="text-purple-400/80 text-sm tracking-[0.25em] uppercase font-medium">
+          <span className="text-purple-400/80 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
             Publicaciones Planificadas
           </span>
-          <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3 tracking-tight">
             Informes 2026
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-blue-500 mt-4 rounded-full"></div>
+          <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-3 sm:mt-4 rounded-full"></div>
         </motion.div>
 
         {/* Grid con imagen central */}
-        <div className="flex-1 relative flex items-center">
+        <div className="flex-1 relative flex items-start lg:items-center">
 
-          {/* Imagen central - exactamente al centro */}
+          {/* Imagen central - oculta en móvil */}
           <motion.div
-            className="absolute z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="hidden lg:block absolute z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             <div className="relative">
-              <div className="w-[192px] h-[192px] rounded-full overflow-hidden ring-4 ring-slate-900 shadow-2xl shadow-purple-500/20">
+              <div className="w-[140px] h-[140px] xl:w-[192px] xl:h-[192px] rounded-full overflow-hidden ring-4 ring-slate-900 shadow-2xl shadow-purple-500/20">
                 <img
                   src="/assets/JMA.png"
                   alt="José Manuel Álvarez"
@@ -119,9 +119,9 @@ export function SlideInformes2() {
             </div>
           </motion.div>
 
-          {/* Grid de informes */}
+          {/* Grid de informes - responsive */}
           <motion.div
-            className="w-full grid grid-cols-2 gap-x-[17rem] gap-y-8"
+            className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-[10rem] xl:gap-x-[17rem] gap-y-4 sm:gap-y-6 lg:gap-y-8 pb-4 lg:pb-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15 }}
@@ -147,7 +147,13 @@ export function SlideInformes2() {
                     <h3 className="text-[22px] font-bold text-white flex-1 leading-tight tracking-[-0.01em]">
                       {informe.title}
                     </h3>
-                    <div className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 group-hover:bg-white/[0.1] transition-colors">
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
+                      style={{
+                        background: 'linear-gradient(145deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9))',
+                        boxShadow: 'inset 2px 2px 4px rgba(0,0,0,0.3), inset -2px -2px 4px rgba(255,255,255,0.05), 0 4px 12px rgba(0,0,0,0.2)'
+                      }}
+                    >
                       {informe.icon}
                     </div>
                   </div>

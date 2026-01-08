@@ -36,22 +36,19 @@ export function SlideIndice({ goToSlide }) {
       <div className="relative z-10 w-full h-full flex">
 
         {/* Columna izquierda - Título */}
-        <div className="hidden lg:flex w-[35%] h-full flex-col justify-center pl-44 xl:pl-52 pr-4">
+        <div className="hidden lg:flex w-[35%] h-full flex-col justify-center pr-4" style={{ paddingLeft: 'var(--space-4xl)' }}>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-blue-400/60 text-sm tracking-[0.3em] uppercase">
+            <span className="text-blue-400/60 tracking-[0.3em] uppercase" style={{ fontSize: 'var(--text-sm)' }}>
               Planificación 2026
             </span>
-            <h2 className="text-5xl xl:text-6xl font-bold text-white mt-4 leading-tight">
+            <h2 className="font-bold text-white leading-tight" style={{ fontSize: 'var(--text-5xl)', marginTop: 'var(--space-md)' }}>
               Contenido
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mt-6 rounded-full" />
-            <p className="text-white/40 mt-8 text-sm leading-relaxed max-w-[260px]">
-              Selecciona una sección para navegar directamente al contenido.
-            </p>
+            <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mt-3 sm:mt-4" />
           </motion.div>
         </div>
 

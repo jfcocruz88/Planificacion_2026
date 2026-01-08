@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
 
 const objectives = [
   {
@@ -19,95 +20,120 @@ const objectives = [
 ]
 
 export function SlideObjetivos() {
+  const videoRef = useRef(null)
+  const [videoOpacity, setVideoOpacity] = useState(0)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    video.playbackRate = 0.8
+
+    const FADE_DURATION = 2 // segundos para fade in/out
+
+    const updateOpacity = () => {
+      const currentTime = video.currentTime
+      const duration = video.duration || 8
+
+      let opacity = 1
+
+      // Fade in al inicio (curva suave)
+      if (currentTime < FADE_DURATION) {
+        // Curva ease-in-out para transición más suave
+        const progress = currentTime / FADE_DURATION
+        opacity = progress * progress * (3 - 2 * progress) // smoothstep
+      }
+      // Fade out al final (curva suave)
+      else if (currentTime > duration - FADE_DURATION) {
+        const progress = (duration - currentTime) / FADE_DURATION
+        opacity = progress * progress * (3 - 2 * progress) // smoothstep
+      }
+
+      setVideoOpacity(Math.max(0, Math.min(1, opacity)))
+    }
+
+    video.addEventListener('timeupdate', updateOpacity)
+    return () => video.removeEventListener('timeupdate', updateOpacity)
+  }, [])
+
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-900">
 
-      {/* Imagen de fondo */}
+      {/* Video de fondo con máscara de desvanecimiento lateral */}
       <motion.div
         className="absolute inset-0"
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+        style={{
+          maskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 75%, black 90%, black 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 75%, black 90%, black 100%)',
+        }}
       >
-        <motion.img
-          src="/assets/helix-ia.png"
-          alt="IA Helix Visualization"
-          className="w-full h-full object-cover"
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover"
           style={{
-            objectPosition: '48% center',
-            filter: 'brightness(1.15) saturate(1.1)',
+            objectPosition: 'center center',
+            filter: 'brightness(0.7) saturate(0.8)',
+            transform: 'scale(1.8) translateX(15%)',
+            transformOrigin: 'center center',
+            opacity: videoOpacity,
+            transition: 'opacity 0.3s ease-out',
           }}
-          animate={{
-            scale: [1, 1.02, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
+        >
+          <source src="/assets/Ambient_Animation_Generation_From_Image.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
-      {/* Overlay */}
+      {/* Overlay oscuro sobre el video para suavizar */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.15) 50%, rgba(15, 23, 42, 0.3) 100%)'
-        }}
-      />
-
-      {/* Gradiente izquierdo */}
-      <div
-        className="absolute inset-y-0 left-0 w-[58%] pointer-events-none"
-        style={{
-          background: 'linear-gradient(to right, rgb(15, 23, 42) 0%, rgb(15, 23, 42) 55%, rgba(15, 23, 42, 0.95) 70%, rgba(15, 23, 42, 0.6) 85%, transparent 100%)'
+          background: 'linear-gradient(to right, rgb(15, 23, 42) 0%, rgb(15, 23, 42) 45%, rgba(15, 23, 42, 0.6) 58%, rgba(15, 23, 42, 0.35) 72%, rgba(15, 23, 42, 0.25) 100%)'
         }}
       />
 
       {/* Gradientes superior e inferior */}
       <div
-        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, rgb(15, 23, 42) 0%, transparent 100%)'
         }}
       />
       <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
         style={{
           background: 'linear-gradient(to top, rgb(15, 23, 42) 0%, transparent 100%)'
         }}
       />
 
-      {/* Viñeta */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 130% 100% at 75% 50%, transparent 20%, rgba(15, 23, 42, 0.5) 70%, rgba(15, 23, 42, 0.9) 100%)'
-        }}
-      />
-
       {/* Contenido */}
-      <div className="relative z-10 w-full h-full flex">
+      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row slide-scroll lg:overflow-hidden">
 
         {/* Columna Izquierda */}
-        <div className="w-[50%] h-full pl-28 pr-10 py-12 flex flex-col justify-center">
+        <div className="w-full lg:w-[55%] xl:w-[50%] h-auto lg:h-full px-4 sm:px-8 md:px-12 lg:pl-16 xl:pl-28 lg:pr-10 py-6 sm:py-8 lg:py-12 flex flex-col justify-center">
 
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <span className="text-blue-400 text-sm tracking-[0.3em] uppercase font-medium">
+            <span className="text-blue-400 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase font-medium">
               Enfoque Estratégico
             </span>
-            <h2 className="text-[3.2rem] font-bold text-white mt-2 tracking-tight leading-none">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[3.2rem] font-bold text-white mt-2 tracking-tight leading-none">
               Objetivos 2026
             </h2>
-            <div className="w-14 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mt-5 rounded-full"></div>
+            <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-3 sm:mt-4 lg:mt-5 rounded-full"></div>
           </motion.div>
 
           {/* Espaciador */}
-          <div className="h-8"></div>
+          <div className="h-10 sm:h-12 lg:h-16"></div>
 
           {/* OBJETIVO PRINCIPAL */}
           <motion.div
@@ -115,34 +141,34 @@ export function SlideObjetivos() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
           >
-            <div className="bg-gradient-to-br from-blue-500/[0.08] to-transparent rounded-xl p-6 border-l-[3px] border-blue-400/60">
-              <p className="text-white text-[1.35rem] leading-[1.65] font-normal">
+            <div className="bg-gradient-to-br from-blue-500/[0.15] to-slate-800/50 backdrop-blur-sm rounded-xl p-5 sm:p-6 lg:p-7 shadow-lg shadow-blue-500/10">
+              <p className="text-white text-lg sm:text-xl lg:text-[1.4rem] leading-relaxed lg:leading-[1.7] font-normal">
                 Posicionar al Observatorio Judicial como un{' '}
-                <span className="text-cyan-400 font-medium">centro de estudios líder</span>{' '}
-                en el uso de <span className="text-blue-400 font-semibold">IA</span> en el control ciudadano a un poder del Estado.
+                <span className="text-amber-300 font-semibold">centro de estudios líder</span>{' '}
+                en el uso de <span className="text-white font-bold">Inteligencia Artificial</span> en el control ciudadano a un poder del Estado.
               </p>
             </div>
           </motion.div>
 
           {/* Espaciador */}
-          <div className="h-10"></div>
+          <div className="h-8 sm:h-10 lg:h-14"></div>
 
           {/* Separador */}
           <motion.div
-            className="flex items-center gap-4"
+            className="flex items-center gap-3 sm:gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-blue-400/70 text-sm uppercase tracking-[0.15em] font-semibold">Líneas de acción</span>
-            <div className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent"></div>
+            <span className="text-slate-400 text-sm sm:text-base uppercase tracking-[0.1em] sm:tracking-[0.15em] font-semibold">Líneas de acción</span>
+            <div className="h-px flex-1 bg-gradient-to-r from-slate-400/50 to-transparent"></div>
           </motion.div>
 
           {/* Espaciador */}
-          <div className="h-6"></div>
+          <div className="h-6 sm:h-8 lg:h-10"></div>
 
           {/* Cards de objetivos */}
-          <div className="space-y-4">
+          <div className="space-y-5 sm:space-y-6">
             {objectives.map((obj, index) => (
               <motion.div
                 key={obj.num}
@@ -150,21 +176,21 @@ export function SlideObjetivos() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25 + index * 0.08 }}
               >
-                <div className="group relative bg-white/[0.03] hover:bg-white/[0.06] rounded-xl py-4 px-5 border border-white/[0.05] hover:border-white/[0.1] transition-all duration-200">
+                <div className="group relative bg-slate-800/60 backdrop-blur-sm hover:bg-slate-800/80 rounded-xl py-4 sm:py-5 px-5 sm:px-6 border border-white/[0.08] hover:border-blue-400/30 transition-all duration-200 shadow-md">
 
                   {/* Contenido */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-4 sm:gap-5">
                     {/* Número */}
-                    <span className="text-blue-400 text-xl font-bold font-mono mt-0.5 w-7 shrink-0">
+                    <span className="text-slate-400 text-xl sm:text-2xl font-bold font-mono mt-0.5 w-8 shrink-0">
                       {obj.num}
                     </span>
 
                     {/* Texto */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-white text-[17px] font-semibold leading-snug mb-1.5">
+                      <h3 className="text-sm sm:text-base font-semibold uppercase tracking-widest text-blue-400/80 mb-2 sm:mb-3">
                         {obj.title}
                       </h3>
-                      <p className="text-white/50 text-[15px] leading-relaxed">
+                      <p className="text-lg sm:text-xl lg:text-[1.35rem] leading-relaxed font-medium bg-gradient-to-r from-white to-amber-50 bg-clip-text text-transparent">
                         {obj.description}
                       </p>
                     </div>
@@ -176,8 +202,8 @@ export function SlideObjetivos() {
 
         </div>
 
-        {/* Columna Derecha */}
-        <div className="w-[50%] h-full relative">
+        {/* Columna Derecha - oculta en móvil */}
+        <div className="hidden lg:block lg:w-[45%] xl:w-[50%] h-full relative">
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{

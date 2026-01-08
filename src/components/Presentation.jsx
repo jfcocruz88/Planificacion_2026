@@ -11,7 +11,6 @@ import { SlideInformes2 } from '../slides/SlideInformes2'
 import { SlideActividades } from '../slides/SlideActividades'
 import { SlideSentencias } from '../slides/SlideSentencias'
 import { SlideVinculo } from '../slides/SlideVinculo'
-import { SlideConsejo } from '../slides/SlideConsejo'
 
 const slides = [
   SlidePortada,
@@ -21,9 +20,8 @@ const slides = [
   SlideInformes1,
   SlideInformes2,
   SlideActividades,
-  SlideSentencias,
   SlideVinculo,
-  SlideConsejo
+  SlideSentencias
 ]
 
 // Transición por defecto - crossfade suave

@@ -5,14 +5,14 @@ export function SlideConsejo() {
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-900">
 
-      {/* Acentos sutiles */}
+      {/* Acentos sutiles - responsive */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-950/30 to-transparent" />
-      <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute -top-20 -left-20 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-indigo-500/10 rounded-full blur-3xl" />
+      <div className="absolute -bottom-20 -right-20 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
 
-      {/* Partículas de fondo */}
+      {/* Partículas de fondo - menos en móvil */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full"
@@ -34,26 +34,26 @@ export function SlideConsejo() {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 w-full h-full px-16 py-10 flex flex-col">
+      <div className="relative z-10 w-full h-full px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 lg:py-10 flex flex-col slide-scroll lg:overflow-hidden">
 
         {/* Header */}
         <motion.div
-          className="mb-8 shrink-0"
+          className="mb-4 sm:mb-6 lg:mb-8 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className="text-blue-400/70 text-sm tracking-[0.25em] uppercase font-medium">
+          <span className="text-blue-400/70 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
             Gobernanza
           </span>
-          <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3 tracking-tight">
             Consejo Asesor
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mt-4 rounded-full"></div>
+          <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-3 sm:mt-4 rounded-full"></div>
         </motion.div>
 
-        {/* Contenido principal */}
+        {/* Contenido principal - responsive */}
         <motion.div
-          className="flex-1 grid grid-cols-2 gap-6"
+          className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 pb-4 lg:pb-0"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}

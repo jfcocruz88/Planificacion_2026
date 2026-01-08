@@ -8,42 +8,33 @@ export function SlideResumen1() {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-950/30 to-transparent" />
 
       {/* Contenido */}
-      <div className="relative z-10 w-full h-full px-16 py-10 flex flex-col">
+      <div className="relative z-10 w-full h-full px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 md:py-10 flex flex-col slide-scroll lg:overflow-hidden">
 
         {/* Header - Consistente con SlideIndice */}
         <motion.div
-          className="mb-8 shrink-0"
+          className="mb-4 sm:mb-6 md:mb-8 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className="text-blue-400/70 text-sm tracking-[0.25em] uppercase font-medium">
+          <span className="text-blue-400/70 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
             Retrospectiva
           </span>
-          <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3 tracking-tight">
             Resumen 2025
           </h2>
-          <div className="flex items-center gap-1.5 mt-5">
-            <div
-              className="w-24 h-1 rounded-full"
-              style={{
-                background: 'linear-gradient(to right, #3b82f6, #22d3ee 60%, transparent)',
-                boxShadow: '0 0 12px rgba(59, 130, 246, 0.5), 0 0 4px rgba(34, 211, 238, 0.3)'
-              }}
-            />
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
-          </div>
+          <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-3 sm:mt-4 md:mt-5 rounded-full"></div>
         </motion.div>
 
-        {/* Grid principal 2x2 - 85% del espacio restante */}
+        {/* Grid principal - responsive: 1 col móvil, 2x2 desktop */}
         <motion.div
-          className="grid grid-cols-2 grid-rows-2 gap-4 min-h-0"
-          style={{ height: '85%' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-rows-2 gap-8 sm:gap-10 lg:gap-12 min-h-0 flex-1 lg:flex-none pb-4 lg:pb-0"
+          style={{ minHeight: 'auto' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
         >
           {/* Card: Informes */}
-          <div className="bg-white/[0.03] rounded-xl p-6 border border-white/[0.06] flex flex-col">
+          <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06] flex flex-col">
             {/* Header */}
             <div className="flex items-center gap-3 mb-5 shrink-0">
               <h3 className="text-white text-sm uppercase tracking-[0.15em] font-semibold">Informes</h3>
@@ -113,7 +104,7 @@ export function SlideResumen1() {
           </div>
 
           {/* Card: Comunicaciones */}
-          <div className="bg-white/[0.03] rounded-xl p-6 border border-white/[0.06] flex flex-col">
+          <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06] flex flex-col">
             <div className="flex items-center gap-3 mb-6 shrink-0">
               <h3 className="text-white text-sm uppercase tracking-[0.15em] font-semibold">Comunicaciones</h3>
               <div className="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
@@ -188,7 +179,7 @@ export function SlideResumen1() {
             </div>
 
             {/* Contenido */}
-            <div className="flex-1 p-6 flex flex-col">
+            <div className="flex-1 p-3 flex flex-col">
               <div className="flex items-center gap-3 mb-5 shrink-0">
                 <h3 className="text-white text-sm uppercase tracking-[0.15em] font-semibold">Actividades</h3>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
@@ -227,7 +218,7 @@ export function SlideResumen1() {
           </div>
 
           {/* Card: Lanzamiento - Con imagen visible */}
-          <div className="bg-white/[0.03] rounded-xl p-6 border border-white/[0.06] flex flex-col">
+          <div className="bg-white/[0.03] rounded-xl p-3 border border-white/[0.06] flex flex-col">
             <div className="flex items-center gap-3 mb-4 shrink-0">
               <h3 className="text-white text-sm uppercase tracking-[0.15em] font-semibold">Lanzamiento</h3>
               <div className="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent"></div>

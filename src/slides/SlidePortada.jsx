@@ -293,7 +293,7 @@ export function SlidePortada() {
 
         {/* Acentos de color animados */}
         <motion.div
-          className="absolute -top-20 -right-20 w-[450px] h-[450px] bg-blue-500/20 rounded-full blur-3xl"
+          className="absolute -top-10 -right-10 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px] bg-blue-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.2, 0.35, 0.2],
@@ -301,7 +301,7 @@ export function SlidePortada() {
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-3xl"
+          className="absolute -bottom-10 -left-10 w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] lg:w-[400px] lg:h-[400px] bg-cyan-500/15 rounded-full blur-3xl"
           animate={{
             scale: [1.1, 1, 1.1],
             opacity: [0.15, 0.25, 0.15],

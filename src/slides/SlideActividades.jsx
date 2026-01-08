@@ -67,32 +67,32 @@ export function SlideActividades() {
       {/* Fondo con gradiente sutil */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
 
-      {/* Acentos de luz sutiles */}
-      <div className="absolute top-0 left-1/6 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/4 left-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
+      {/* Acentos de luz sutiles - responsive */}
+      <div className="absolute top-0 left-1/6 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-amber-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/2 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-cyan-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-purple-500/5 rounded-full blur-3xl" />
 
       {/* Contenido */}
-      <div className="relative z-10 w-full h-full px-16 py-10 flex flex-col">
+      <div className="relative z-10 w-full h-full px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 lg:py-10 flex flex-col slide-scroll lg:overflow-hidden">
 
         {/* Header */}
         <motion.div
-          className="mb-8 shrink-0"
+          className="mb-4 sm:mb-6 lg:mb-8 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className="text-blue-400/70 text-sm tracking-[0.25em] uppercase font-medium">
+          <span className="text-blue-400/70 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
             Agenda 2026
           </span>
-          <h2 className="text-5xl font-bold text-white mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3 tracking-tight">
             Lanzamiento y seminarios
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mt-4 rounded-full"></div>
+          <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-3 sm:mt-4 rounded-full"></div>
         </motion.div>
 
-        {/* Grid de seminarios con imágenes */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="grid grid-cols-3 gap-12 w-full max-w-7xl h-[70%]">
+        {/* Grid de seminarios con imágenes - responsive */}
+        <div className="flex-1 flex items-start lg:items-center justify-center pb-4 lg:pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-12 w-full max-w-7xl lg:h-[70%]">
           {actividades.map((actividad, index) => (
             <motion.div
               key={actividad.num}

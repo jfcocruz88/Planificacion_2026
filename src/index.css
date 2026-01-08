@@ -32,3 +32,58 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+@layer utilities {
+  /* Clase para scroll en móvil cuando el contenido excede */
+  .slide-scroll {
+    @apply overflow-y-auto overflow-x-hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .slide-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .slide-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .slide-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  /* Texto responsive con clamp para mejor escalado */
+  .text-responsive-sm {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .text-responsive-base {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .text-responsive-2xl {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .text-responsive-3xl {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+
+  .text-responsive-4xl {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .text-responsive-5xl {
+    font-size: clamp(2.25rem, 8vw, 3.5rem);
+  }
+}

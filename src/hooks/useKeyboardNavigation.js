@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const TOTAL_SLIDES = 10
+const TOTAL_SLIDES = 9
 
 export function useKeyboardNavigation() {
   const [currentSlide, setCurrentSlide] = useState(0)
