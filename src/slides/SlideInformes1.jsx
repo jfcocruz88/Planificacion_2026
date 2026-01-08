@@ -93,11 +93,11 @@ export function SlideInformes1() {
 
         {/* Header */}
         <motion.div
-          className="mb-4 sm:mb-6 lg:mb-8 shrink-0"
+          className="mb-6 sm:mb-8 lg:mb-12 shrink-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className="text-cyan-400/80 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
+          <span className="text-blue-400 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">
             Publicaciones Planificadas
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3 tracking-tight">
@@ -107,7 +107,7 @@ export function SlideInformes1() {
         </motion.div>
 
         {/* Grid con imagen central */}
-        <div className="flex-1 relative lg:-mt-[5%] xl:-mt-[8%]">
+        <div className="flex-1 relative lg:-mt-[2%] xl:-mt-[3%]">
 
           {/* Imagen central - oculta en móvil, visible en lg+ */}
           <motion.div

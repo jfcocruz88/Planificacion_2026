@@ -4,10 +4,9 @@ const sections = [
   { num: '01', title: 'Resumen 2025', desc: 'Balance del año anterior', slide: 2 },
   { num: '02', title: 'Objetivos 2026', desc: 'Metas y enfoque estratégico', slide: 3 },
   { num: '03', title: 'Informes', desc: 'Publicaciones planificadas', slide: 4 },
-  { num: '04', title: 'Actividades', desc: 'Seminarios y eventos', slide: 7 },
-  { num: '05', title: 'Sentencias Destacadas', desc: 'Lanzamiento y novedades', slide: 8 },
-  { num: '06', title: 'Vínculo con el Medio', desc: 'Comunicación y difusión', slide: 9 },
-  { num: '07', title: 'Consejo Asesor', desc: 'Composición y cambios', slide: 10 },
+  { num: '04', title: 'Actividades', desc: 'Seminarios y eventos', slide: 6 },
+  { num: '05', title: 'Vínculo con el Medio', desc: 'Comunicación y difusión', slide: 7 },
+  { num: '06', title: 'Otros', desc: 'Sentencias y Consejo Asesor', slide: 8 },
 ]
 
 export function SlideIndice({ goToSlide }) {
@@ -36,16 +35,16 @@ export function SlideIndice({ goToSlide }) {
       <div className="relative z-10 w-full h-full flex">
 
         {/* Columna izquierda - Título */}
-        <div className="hidden lg:flex w-[35%] h-full flex-col justify-center pr-4" style={{ paddingLeft: 'var(--space-4xl)' }}>
+        <div className="hidden lg:flex w-[35%] h-full flex-col justify-center pr-4 pl-72">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-blue-400/60 tracking-[0.3em] uppercase" style={{ fontSize: 'var(--text-sm)' }}>
+            <span className="text-blue-400/60 tracking-[0.3em] uppercase text-base">
               Planificación 2026
             </span>
-            <h2 className="font-bold text-white leading-tight" style={{ fontSize: 'var(--text-5xl)', marginTop: 'var(--space-md)' }}>
+            <h2 className="font-bold text-white leading-tight text-6xl mt-4">
               Contenido
             </h2>
             <div className="w-16 sm:w-20 lg:w-28 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mt-3 sm:mt-4" />
@@ -98,9 +97,8 @@ export function SlideIndice({ goToSlide }) {
                   hover:bg-white/5 border border-transparent hover:border-white/10">
 
                   {/* Número grande */}
-                  <span className="text-3xl lg:text-4xl font-bold text-white/20
-                    group-hover:text-blue-400/60 transition-colors duration-300
-                    font-mono w-12 lg:w-14 shrink-0">
+                  <span className="text-3xl lg:text-4xl font-bold text-blue-400/70
+                    transition-colors duration-300 font-mono w-12 lg:w-14 shrink-0">
                     {section.num}
                   </span>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { AnimatedBackground } from '../components/AnimatedBackground'
 
 const objetivos = [
   {
@@ -98,7 +99,7 @@ const CIRCLE_RADIUS = 142
 
 // Configuración de tiempos para animación secuencial
 const PULSE_DURATION = 1.0
-const ION_TRAVEL_DURATION = 1.7
+const ION_TRAVEL_DURATION = 1.3
 const GLOW_DURATION = 0.6
 const PAUSE_BETWEEN = 0.3
 const SINGLE_SEQUENCE = PULSE_DURATION + ION_TRAVEL_DURATION + PAUSE_BETWEEN
@@ -276,10 +277,8 @@ export function SlideVinculo() {
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-900">
 
-      {/* Acentos de fondo - responsive */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-950/20 to-transparent" />
-      <div className="absolute -top-20 -left-20 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-purple-500/5 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 right-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-cyan-500/[0.03] rounded-full blur-3xl" />
+      {/* Fondo animado Bokeh */}
+      <AnimatedBackground accentColor="purple" />
 
       {/* Contenido principal */}
       <div className="relative z-10 w-full h-full flex flex-col lg:flex-row slide-scroll lg:overflow-hidden">
@@ -303,7 +302,7 @@ export function SlideVinculo() {
           </motion.div>
 
           {/* Objetivos */}
-          <div className="space-y-5 lg:ml-16">
+          <div className="space-y-7 lg:ml-16">
             {objetivos.map((obj, index) => (
               <motion.div
                 key={obj.num}
@@ -313,26 +312,26 @@ export function SlideVinculo() {
                 transition={{ delay: 0.2 + index * 0.1 }}
               >
                 {/* Borde de acento izquierdo */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-400" />
+                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-blue-400/80 via-blue-500/60 to-blue-600/40" />
 
                 <div className="flex items-start gap-4 pl-2">
                   {/* Número */}
-                  <span className="text-blue-400 text-2xl font-bold font-mono shrink-0">
+                  <span className="text-blue-400 text-xl font-bold font-mono shrink-0">
                     {obj.num}
                   </span>
                   <div className="flex-1">
-                    <h3 className="text-white text-xl font-semibold mb-2">
+                    <h3 className="text-white text-lg font-semibold mb-2">
                       {obj.title}
                     </h3>
                     {obj.description && (
-                      <p className="text-white/60 text-lg leading-relaxed">
+                      <p className="text-white/60 text-base leading-relaxed">
                         {obj.description}
                       </p>
                     )}
                     {obj.items && (
                       <ul className="space-y-2">
                         {obj.items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-lg text-white/60 leading-relaxed">
+                          <li key={i} className="flex items-start gap-2 text-base text-white/60 leading-relaxed">
                             <span className="text-slate-400 mt-0.5">•</span>
                             <span>{item}</span>
                           </li>

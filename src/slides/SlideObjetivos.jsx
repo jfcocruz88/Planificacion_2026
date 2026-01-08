@@ -141,34 +141,50 @@ export function SlideObjetivos() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
           >
-            <div className="bg-gradient-to-br from-blue-500/[0.15] to-slate-800/50 backdrop-blur-sm rounded-xl p-5 sm:p-6 lg:p-7 shadow-lg shadow-blue-500/10">
-              <p className="text-white text-lg sm:text-xl lg:text-[1.4rem] leading-relaxed lg:leading-[1.7] font-normal">
+            <div className="bg-gradient-to-br from-blue-500/[0.15] to-slate-800/50 backdrop-blur-sm rounded-lg p-4 sm:p-5 lg:p-6 shadow-lg shadow-blue-500/10">
+              <p className="text-white text-base sm:text-lg lg:text-[1.2rem] leading-relaxed lg:leading-[1.6] font-normal">
                 Posicionar al Observatorio Judicial como un{' '}
-                <span className="text-amber-300 font-semibold">centro de estudios líder</span>{' '}
-                en el uso de <span className="text-white font-bold">Inteligencia Artificial</span> en el control ciudadano a un poder del Estado.
+                <span
+                  className="font-semibold"
+                  style={{
+                    background: 'linear-gradient(90deg, #d4af70 0%, #22d3ee 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >centro de estudios líder</span>{' '}
+                en el uso de{' '}
+                <span
+                  className="font-bold"
+                  style={{
+                    background: 'linear-gradient(90deg, #d4af70 0%, #22d3ee 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >Inteligencia Artificial</span>{' '}
+                en el control ciudadano a un poder del Estado.
               </p>
             </div>
           </motion.div>
 
           {/* Espaciador */}
-          <div className="h-8 sm:h-10 lg:h-14"></div>
+          <div className="h-6 sm:h-8 lg:h-12"></div>
 
           {/* Separador */}
           <motion.div
-            className="flex items-center gap-3 sm:gap-4"
+            className="flex items-center gap-2 sm:gap-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-slate-400 text-sm sm:text-base uppercase tracking-[0.1em] sm:tracking-[0.15em] font-semibold">Líneas de acción</span>
+            <span className="text-slate-400 text-xs sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.15em] font-semibold">Líneas de acción</span>
             <div className="h-px flex-1 bg-gradient-to-r from-slate-400/50 to-transparent"></div>
           </motion.div>
 
           {/* Espaciador */}
-          <div className="h-6 sm:h-8 lg:h-10"></div>
+          <div className="h-5 sm:h-6 lg:h-8"></div>
 
           {/* Cards de objetivos */}
-          <div className="space-y-5 sm:space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             {objectives.map((obj, index) => (
               <motion.div
                 key={obj.num}
@@ -176,21 +192,21 @@ export function SlideObjetivos() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25 + index * 0.08 }}
               >
-                <div className="group relative bg-slate-800/60 backdrop-blur-sm hover:bg-slate-800/80 rounded-xl py-4 sm:py-5 px-5 sm:px-6 border border-white/[0.08] hover:border-blue-400/30 transition-all duration-200 shadow-md">
+                <div className="group relative bg-slate-800/60 backdrop-blur-sm hover:bg-slate-800/80 rounded-lg py-3 sm:py-4 px-4 sm:px-5 border border-white/[0.08] hover:border-blue-400/30 transition-all duration-200 shadow-md">
 
                   {/* Contenido */}
-                  <div className="flex items-start gap-4 sm:gap-5">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     {/* Número */}
-                    <span className="text-slate-400 text-xl sm:text-2xl font-bold font-mono mt-0.5 w-8 shrink-0">
+                    <span className="text-slate-400 text-lg sm:text-xl font-bold font-mono mt-0.5 w-7 shrink-0">
                       {obj.num}
                     </span>
 
                     {/* Texto */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm sm:text-base font-semibold uppercase tracking-widest text-blue-400/80 mb-2 sm:mb-3">
+                      <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-blue-400/80 mb-1.5 sm:mb-2">
                         {obj.title}
                       </h3>
-                      <p className="text-lg sm:text-xl lg:text-[1.35rem] leading-relaxed font-medium bg-gradient-to-r from-white to-amber-50 bg-clip-text text-transparent">
+                      <p className="text-base sm:text-lg lg:text-[1.15rem] leading-relaxed font-medium bg-gradient-to-r from-white to-amber-50 bg-clip-text text-transparent">
                         {obj.description}
                       </p>
                     </div>

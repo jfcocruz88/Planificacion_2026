@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { AnimatedBackground } from '../components/AnimatedBackground'
 
 const colorClasses = {
   amber: {
@@ -64,13 +65,8 @@ export function SlideActividades() {
   return (
     <div className="relative w-full h-full overflow-hidden bg-slate-950">
 
-      {/* Fondo con gradiente sutil */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-
-      {/* Acentos de luz sutiles - responsive */}
-      <div className="absolute top-0 left-1/6 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-amber-500/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/4 left-1/2 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-cyan-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-purple-500/5 rounded-full blur-3xl" />
+      {/* Fondo animado Bokeh */}
+      <AnimatedBackground accentColor="amber" />
 
       {/* Contenido */}
       <div className="relative z-10 w-full h-full px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 lg:py-10 flex flex-col slide-scroll lg:overflow-hidden">
