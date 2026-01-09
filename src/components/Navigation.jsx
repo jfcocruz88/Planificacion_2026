@@ -7,7 +7,9 @@ export function Navigation({
   onPrev,
   onGoTo,
   isFirst,
-  isLast
+  isLast,
+  isFullscreen,
+  onToggleFullscreen
 }) {
   return (
     <>
@@ -101,6 +103,53 @@ export function Navigation({
               strokeLinejoin="round"
             />
           </svg>
+        </motion.button>
+
+        {/* Separador */}
+        <div className="w-px h-4 bg-white/20 mx-1" />
+
+        {/* Botón fullscreen */}
+        <motion.button
+          onClick={onToggleFullscreen}
+          className="p-1 sm:p-1.5 rounded-full transition-all duration-300 group hover:bg-white/10"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+          title="Presiona F para alternar"
+        >
+          {isFullscreen ? (
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="text-white/60 group-hover:text-white/90 transition-colors sm:w-4 sm:h-4"
+            >
+              <path
+                d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="text-white/60 group-hover:text-white/90 transition-colors sm:w-4 sm:h-4"
+            >
+              <path
+                d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
         </motion.button>
       </motion.div>
 

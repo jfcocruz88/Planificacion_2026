@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
+import { useFullscreen } from '../hooks/useFullscreen'
 import { Navigation } from './Navigation'
 
 import { SlidePortada } from '../slides/SlidePortada'
@@ -165,6 +166,8 @@ export function Presentation() {
     isLast
   } = useKeyboardNavigation()
 
+  const { is_fullscreen, toggle_fullscreen } = useFullscreen()
+
   const CurrentSlideComponent = slides[currentSlide]
 
   // Obtener variantes y transición para la slide actual
@@ -181,6 +184,8 @@ export function Presentation() {
         onGoTo={goToSlide}
         isFirst={isFirst}
         isLast={isLast}
+        isFullscreen={is_fullscreen}
+        onToggleFullscreen={toggle_fullscreen}
       />
 
       <AnimatePresence mode="sync" custom={direction}>
